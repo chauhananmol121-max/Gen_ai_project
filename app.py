@@ -12,29 +12,28 @@ api_key = st.text_input("sk-proj-S3_0NaTa6kE6iHg323BkCXdPV0YsNdwTlLY73fWGJUOKgvD
 
 st.divider()
 
-# Choose what to generate
-option = st.selectbox("What do you want to generate?", ["Story", "Poem"])
 
-# User prompt
+option = st.selectbox("What do you want to generate?", ["Story", "Poem"]
+                      
 prompt = st.text_area("Enter your idea or topic", placeholder="e.g. A dragon who is afraid of fire...")
 
-# Extra options
+
 if option == "Story":
     genre = st.selectbox("Choose a genre", ["Fantasy", "Mystery", "Romance", "Horror", "Adventure"])
     length = st.selectbox("Story length", ["Short", "Medium", "Long"])
 else:
     style = st.selectbox("Choose poem style", ["Rhyming", "Haiku", "Free Verse", "Limerick"])
 
-# Generate button
+
 if st.button("Generate"):
 
-    # Check inputs
+    
     if not api_key:
         st.warning("Please enter your OpenAI API Key.")
     elif not prompt:
         st.warning("Please enter a topic or idea.")
     else:
-        # Build the prompt
+        
         if option == "Story":
             word_map = {"Short": "100", "Medium": "250", "Long": "400"}
             words = word_map[length]
